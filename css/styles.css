@@ -1,0 +1,289 @@
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --right-bg: #f4f4f4;
+  --transition-speed: 600ms;
+}
+
+body.dark {
+  --bg: #111111;
+  --text: #ffffff;
+  --right-bg: #1e1e1e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Crimson Text', serif;
+  transition:
+    background var(--transition-speed) ease,
+    color var(--transition-speed) ease,
+    filter var(--transition-speed) ease;
+}
+
+body.transitioning {
+  filter: none;
+}
+
+a {
+  color: #4facfe;
+}
+
+#theme-toggle {
+  position: fixed;
+  right: 20px;
+  z-index: 10;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.left {
+  width: 40%;
+  position: relative;
+  overflow: hidden;
+  background: #111;
+}
+
+.right {
+  width: 60%;
+  background: var(--right-bg);
+  padding: 40px;
+  transition: background var(--transition-speed) ease;
+  backdrop-filter: blur(10px);
+}
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.left-content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left, .right {
+    width: 100%;
+    height: 50vh;
+  }
+}
+
+/* Navbar center layout */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+body.dark .navbar {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Center nav links */
+.nav-center {
+  display: flex;
+  gap: 30px;
+}
+
+/* Links */
+.nav-link {
+  text-decoration: none;
+  color: var(--text);
+  position: relative;
+  font-weight: 500;
+}
+
+/* Active underline */
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 2px;
+  background: #4facfe;
+}
+
+/* Theme button */
+.theme-btn {
+  position: fixed;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Push content below navbar */
+.container {
+  margin-top: 70px;
+}
+
+/* 🔻 Footer */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: var(--right-bg);
+  transition: background var(--transition-speed) ease;
+}
+
+/* Intro cards layout */
+.intro-card {
+  border-left: 4px solid #4facfe;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle glow effect */
+.intro-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(79, 172, 254, 0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.intro-card:hover::before {
+  opacity: 1;
+}
+
+/* spacing */
+.right h1 {
+  margin-bottom: 20px;
+}
+
+/* Typing cursor */
+#typing::after {
+  content: "|";
+  margin-left: 5px;
+  animation: blink 1s infinite;
+}
+
+.typing-text {
+  margin-bottom: 20px;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Expandable cards */
+.expandable {
+  cursor: pointer;
+}
+
+.expandable .full {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.expandable.active .full {
+  max-height: 200px;
+}
+
+.expandable .preview {
+  opacity: 0.8;
+}
+
+/* Timeline */
+.timeline {
+  margin-top: 30px;
+  border-left: 2px solid #4facfe;
+  padding-left: 20px;
+}
+
+.timeline-item {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.timeline-item span {
+  position: absolute;
+  left: -32px;
+  top: 0;
+}
+
+/* Portfolio cards */
+.card {
+  border-left: 4px solid #4facfe;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s;
+}
+
+body.dark .card {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Contact form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  background: rgba(0,0,0,0.05);
+}
+
+body.dark .contact-form input,
+body.dark .contact-form textarea {
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+.contact-form button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #4facfe;
+  color: white;
+  transition: opacity 0.3s;
+}
+
+.contact-form button:hover {
+  opacity: 0.8;
+}
