@@ -1,4 +1,4 @@
 # Portofolio Website
-Web portofolio to showcase projects and skills
+Web portfolio to showcase projects and skills.
 
-https://mockcube.github.io/#
+https://mockcube.github.io
