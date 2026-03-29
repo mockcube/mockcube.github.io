@@ -36,23 +36,29 @@ a {
 }
 
 #theme-toggle {
-  position: fixed;
-  right: 20px;
+  position: absolute;
+  top: 1px;
+  right: 16px;
   z-index: 10;
-  padding: 10px 15px;
+  padding: 10px 12px;
   cursor: pointer;
 }
 
 .container {
   display: flex;
-  height: 100vh;
+  min-height: calc(100vh - 120px);
+  height: auto;
+  flex-wrap: wrap;
+  margin-top: 70px;
 }
 
 .left {
-  width: 40%;
+  flex: 0 0 40%;
+  min-width: 320px;
   position: relative;
   overflow: hidden;
   background: #111;
+  min-height: 50vh;
 }
 
 .right {
@@ -75,16 +81,116 @@ a {
   z-index: 1;
   color: white;
   padding: 20px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .left, .right {
+    flex: 0 0 100%;
+    min-width: 100%;
+  }
+
+  .right {
+    padding: 30px;
+  }
+
+  .left {
+    min-height: 40vh;
+  }
 }
 
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
+    min-height: auto;
   }
 
   .left, .right {
+    flex: 0 0 100%;
+    min-width: 100%;
+    height: auto;
+  }
+
+  .left {
+    min-height: 35vh;
+  }
+
+  .right {
+    padding: 20px;
+  }
+
+  .navbar {
+    padding: 10px 16px;
+    justify-content: space-between;
+  }
+
+  .nav-toggle {
+    display: block;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 110;
+  }
+
+  .nav-center {
+    position: absolute;
+    top: 58px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    padding: 12px;
+    display: flex;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin: 0 16px;
+    border-radius: 8px;
+    transition: max-height 0.25s ease, opacity 0.25s ease;
+  }
+
+  body.dark .nav-center {
+    background: rgba(0, 0, 0, 0.95);
+  }
+
+  .nav-center.open {
+    max-height: 240px;
+    opacity: 1;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
     width: 100%;
-    height: 50vh;
+    padding: 10px;
+    border-radius: 6px;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    background: rgba(79, 172, 254, 0.1);
+  }
+
+  #theme-toggle,
+  .theme-btn {
+    position: relative;
+    right: auto;
+    margin-left: 8px;
+    top: auto;
+  }
+
+  .footer {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .nav-toggle {
+    display: none;
   }
 }
 
@@ -134,17 +240,12 @@ body.dark .navbar {
 
 /* Theme button */
 .theme-btn {
-  position: fixed;
+  position: absolute;
   right: 20px;
   background: none;
   border: none;
   font-size: 18px;
   cursor: pointer;
-}
-
-/* Push content below navbar */
-.container {
-  margin-top: 70px;
 }
 
 /* 🔻 Footer */

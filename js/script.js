@@ -137,6 +137,30 @@ links.forEach(link => {
   }
 });
 
+// Mobile hamburger nav toggle
+const navToggle = document.getElementById("nav-toggle");
+const navCenter = document.querySelector(".nav-center");
+
+if (navToggle && navCenter) {
+  navToggle.addEventListener("click", () => {
+    navCenter.classList.toggle("open");
+  });
+
+  links.forEach(link => {
+    link.addEventListener("click", () => {
+      if (navCenter.classList.contains("open")) {
+        navCenter.classList.remove("open");
+      }
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!navCenter.contains(e.target) && !navToggle.contains(e.target)) {
+      navCenter.classList.remove("open");
+    }
+  });
+}
+
 // Typing animation
 
 const typingEl = document.getElementById("typing");
