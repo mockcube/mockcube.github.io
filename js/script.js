@@ -166,7 +166,7 @@ if (navToggle && navCenter) {
 const typingEl = document.getElementById("typing");
 
 if (typingEl) {
-  const words = ["Software Developer", "Engineer", "AI Enthusiast"];
+  const words = ["Software Developer", "Web Designer", "Engineer", "AI Enthusiast"];
   let i = 0, j = 0, current = "", isDeleting = false;
 
   function type() {
