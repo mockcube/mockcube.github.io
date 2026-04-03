@@ -14,13 +14,13 @@ const THEMES = {
 
 particlesJS("particles-js", {
   particles: {
-    number: { value: 80 },
+    number: { value: 180 },
     color: { value: "#ffffff" },
     line_linked: { enable: true, color: "#ffffff" },
     shape: { type: "circle" },
     opacity: { value: 0.6 },
     size: { value: 3 },
-    move: { enable: true, speed: 3 }
+    move: { enable: true, speed: 7 }
   }
 });
 
@@ -166,7 +166,7 @@ if (navToggle && navCenter) {
 const typingEl = document.getElementById("typing");
 
 if (typingEl) {
-  const words = ["Software Developer", "Web Designer", "Engineer", "AI Enthusiast"];
+  const words = ["Software Developer", "Web Designer", "Data Analyst","Engineer", "AI Enthusiast"];
   let i = 0, j = 0, current = "", isDeleting = false;
 
   function type() {
